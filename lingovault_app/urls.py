@@ -7,4 +7,6 @@ app_name = 'lingovault_app'
 urlpatterns = [
     # home page
     path('', views.home, name='home'),
+    # all languages
+    path('languages/', views.languages, name='languages'),
 ]
