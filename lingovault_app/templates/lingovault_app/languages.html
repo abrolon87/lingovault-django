@@ -1,0 +1,14 @@
+{% extends "lingovault_app/base.html" %}
+{% block content %}
+
+<p>Languages</p>
+
+<ul>
+  {% for language in languages %}
+    <li>{{ language }}</li>
+  {% empty %}
+    <li>No languages added yet :( </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}
