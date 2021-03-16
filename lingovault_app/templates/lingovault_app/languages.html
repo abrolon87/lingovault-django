@@ -5,7 +5,7 @@
 
 <ul>
   {% for language in languages %}
-    <li>{{ language }}</li>
+    <li><a href="{% url 'lingovault_app:language' language.id %}">{{ language }}</a></li>
   {% empty %}
     <li>No languages added yet :( </li>
   {% endfor %}
