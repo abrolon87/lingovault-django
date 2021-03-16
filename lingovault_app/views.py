@@ -12,3 +12,10 @@ def languages(request):
     languages = Language.objects.order_by('date_added')
     context = {'languages': languages}
     return render(request, 'lingovault_app/languages.html', context)
+
+
+def language(request, language_id):
+    language = Language.objects.get(id=language_id)
+    posts = language.post_set.order_by('-date_added')
+    context = {'language': language, 'posts': posts}
+    return render(request, 'lingovault_app/language.html', context)
