@@ -1,0 +1,13 @@
+{% extends "lingovault_app/base.html" %}
+
+{% block content %}
+
+<p>Add a new language:</p>
+
+<form action="{% url 'lingovault_app:new_language' %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">Add Language</button>
+</form>
+
+{% endblock content %}
