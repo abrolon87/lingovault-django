@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .models import Language
-from .forms import LanguageForm
+from .models import Language, Post
+from .forms import LanguageForm, PostForm
 # Create your views here.
 
 
@@ -32,3 +32,20 @@ def new_language(request):
             return redirect('lingovault_app:languages')
     context = {'form': form}
     return render(request, 'lingovault_app/new_language.html', context)
+
+
+def new_post(request, language_id):
+    language = Language.objects.get(id=language_id)
+
+    if request.method != 'POST':
+        form = PostForm()
+    else:
+        form = PostForm(data=request.POST)
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.language = language
+            new_post.save()
+            return redirect('lingovault_app:language', language_id=language_id)
+
+    context = {'language': language, 'form': form}
+    return render(request, 'lingovault_app/new_post.html', context)
