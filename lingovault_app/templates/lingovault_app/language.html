@@ -3,7 +3,7 @@
 {% block content %}
 
 <p>{{ language }} Posts</p>
-
+<a href="{% url 'lingovault_app:new_post' language.id %}">Add a new post</a>
 <p>Posts:</p>
 <ul>
 {% for post in posts %}
