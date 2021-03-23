@@ -49,3 +49,19 @@ def new_post(request, language_id):
 
     context = {'language': language, 'form': form}
     return render(request, 'lingovault_app/new_post.html', context)
+
+
+def edit_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    language = post.language
+
+    if request.method != 'POST':
+        form = PostForm(instance=post)
+    else:
+        form = PostForm(instance=post, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lingovault_app:language', language_id=language.id)
+
+    context = {'post': post, 'language': language, 'form': form}
+    return render(request, 'lingovault_app/edit_post.html', context)
