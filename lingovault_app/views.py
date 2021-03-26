@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .models import Language, Post
 from .forms import LanguageForm, PostForm
@@ -9,12 +10,14 @@ def home(request):
     return render(request, 'lingovault_app/home.html')
 
 
+@login_required
 def languages(request):
     languages = Language.objects.order_by('date_added')
     context = {'languages': languages}
     return render(request, 'lingovault_app/languages.html', context)
 
 
+@login_required
 def language(request, language_id):
     language = Language.objects.get(id=language_id)
     posts = language.post_set.order_by('-date_added')
@@ -22,6 +25,7 @@ def language(request, language_id):
     return render(request, 'lingovault_app/language.html', context)
 
 
+@login_required
 def new_language(request):
     if request.method != 'POST':
         form = LanguageForm()
@@ -34,6 +38,7 @@ def new_language(request):
     return render(request, 'lingovault_app/new_language.html', context)
 
 
+@login_required
 def new_post(request, language_id):
     language = Language.objects.get(id=language_id)
 
@@ -51,6 +56,7 @@ def new_post(request, language_id):
     return render(request, 'lingovault_app/new_post.html', context)
 
 
+@login_required
 def edit_post(request, post_id):
     post = Post.objects.get(id=post_id)
     language = post.language
