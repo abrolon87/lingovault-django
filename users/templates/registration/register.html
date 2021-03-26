@@ -1,0 +1,14 @@
+{% extends "lingovault_app/base.html" %}
+
+{% block content %}
+
+  <form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit">Signup</button>
+    <input type="hidden" name="next" value="{% url 'lingovault_app:home' %}" />
+
+  </form>
+
+{% endblock content %}
