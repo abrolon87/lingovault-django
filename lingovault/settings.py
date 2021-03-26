@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # custom apps
     'lingovault_app',
+    'users',
     # default django apps
     'django.contrib.admin',
     'django.contrib.auth',
