@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     # custom apps
     'lingovault_app',
     'users',
+
+    # third-party apps
+    'bootstrap4',
+
     # default django apps
     'django.contrib.admin',
     'django.contrib.auth',
