@@ -1,11 +1,23 @@
 {% extends "lingovault_app/base.html" %}
 
-{% block content %}
-<h1>Welcome to Lingovault!</h1>
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">lingovault</h1>
+  
+    <p class="lead">Track your language learning progress here.</p>
+    {% if user.is_authenticated %}
+    <a href="{% url 'lingovault_app:languages' %}" class="btn btn-lg btn-primary" role="button">Enter &raquo;</a>
+    {% else %}
+    <a href="{% url 'users:register' %}" class="btn btn-lg btn-primary" role="button">Sign up &raquo;</a>
+    {% endif %}
+  </div>
 
-<p>Track your language learning progress here.</p>
 
-{% endblock content %}
+{% endblock page_header %}
+
+
+
+
 
 
 
