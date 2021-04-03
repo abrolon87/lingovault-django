@@ -1,16 +1,18 @@
 {% extends "lingovault_app/base.html" %}
+
+{% block page_header %}
+  <h1>My Lingovault</h1>
+{% endblock page_header %}
 {% block content %}
+<ul>
+  {% for language in languages %}
+    <li><h3>
+      <a href="{% url 'lingovault_app:language' language.id %}">{{ language }}</a>
+    </h3></li>
+  {% empty %}
+    <li><h3>No languages added yet :( </h3></li>
+  {% endfor %}
 
-  <p>Languages</p>
-
-  <ul>
-    {% for language in languages %}
-      <li><a href="{% url 'lingovault_app:language' language.id %}">{{ language }}</a></li>
-    {% empty %}
-      <li>No languages added yet :( </li>
-    {% endfor %}
-  </ul>
-
-  <a href="{% url 'lingovault_app:new_language' %}">Add a new language</a>
-
+</ul>
+<h3><a href="{% url 'lingovault_app:new_language' %}">Add a new language</a></h3>
 {% endblock content %}

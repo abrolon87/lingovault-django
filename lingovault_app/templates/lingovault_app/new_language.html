@@ -1,13 +1,25 @@
 {% extends "lingovault_app/base.html" %}
 
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <p>Add New Language:</p>
+{% endblock page_header %}
+
 {% block content %}
-
-<p>Add a new language:</p>
-
-<form action="{% url 'lingovault_app:new_language' %}" method='post'>
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button name="submit">Add Language</button>
-</form>
-
+  
+  <form method='post' action="{% url 'lingovault_app:new_language' %}" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button name="submit" class="btn btn-primary">Add Language</button>
+    {% endbuttons %}
+  </form>
+  
 {% endblock content %}
+
+
+
+
+
+

@@ -1,14 +1,22 @@
 {% extends "lingovault_app/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h2>Create an Account</h2>
+{% endblock page_header %}
 
 {% block content %}
-
-  <form action="{% url 'users:register' %}" method="post">
+  <form method="post" action="{% url 'users:register' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-
-    <button name="submit">Signup</button>
-    <input type="hidden" name="next" value="{% url 'lingovault_app:home' %}" />
-
-  </form>
-
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button name="submit">Create Account</button>
+    {% endbuttons %}
+      <input type="hidden" name="next" value="{% url 'lingovault_app:home' %}" />
+    </form>
+  
 {% endblock content %}
+
+
+
+
