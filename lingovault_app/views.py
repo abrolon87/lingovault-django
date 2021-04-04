@@ -81,3 +81,17 @@ def edit_post(request, post_id):
 
     context = {'post': post, 'language': language, 'form': form}
     return render(request, 'lingovault_app/edit_post.html', context)
+
+
+@login_required
+def delete_language(request, language_id):
+    context = {}
+    language = Language.objects.get(id=language_id)
+    if language.user != request.user:
+        raise Http404
+
+    if request.method == "POST":
+        language.delete()
+        return redirect('lingovault_app:languages')
+
+    return render(request, "lingovault_app/delete_language.html", context)
