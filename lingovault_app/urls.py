@@ -17,4 +17,7 @@ urlpatterns = [
     path('new_post/<int:language_id>/', views.new_post, name='new_post'),
     # edit post
     path('edit_post/<int:post_id>/', views.edit_post, name='edit_post'),
+    # delete language
+    path('<int:language_id>/delete_language',
+         views.delete_language, name="delete_language")
 ]
