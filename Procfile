@@ -1,0 +1,1 @@
+web: gunicorn lingovault.wsgi --log-file -
