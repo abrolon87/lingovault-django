@@ -14,11 +14,13 @@
     <h4 class="card-header">
       {{ entry.date_added|date:'M d, Y H:i' }}
       <small><a href="{% url 'lingovault_app:edit_post' post.id %}">edit post</a></small>
+      
     </h4>
     <div class="card-body">
       {{ post.text|linebreaks }}
     </div>
   </div>
+  <small><a href="{% url 'lingovault_app:delete_language' language.id %}">delete language</a></small>
   {% empty %}
     <p>There are no posts for this language.</p>
   {% endfor %}
