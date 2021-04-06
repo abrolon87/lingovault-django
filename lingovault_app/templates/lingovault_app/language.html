@@ -20,11 +20,11 @@
       {{ post.text|linebreaks }}
     </div>
   </div>
-  <small><a href="{% url 'lingovault_app:delete_language' language.id %}">delete language</a></small>
+  
   {% empty %}
     <p>There are no posts for this language.</p>
   {% endfor %}
-
+  <small><a href="{% url 'lingovault_app:delete_language' language.id %}">delete language</a></small>
 {% endblock content %}
 
   
